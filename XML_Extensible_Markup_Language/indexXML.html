@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>XML and XML in Android</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="styleXML.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">XML and XML in Android</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#xml">XML</a></li>
+<li><a href="#xml-in-android">XML in Android:</a>
+<ul>
+<li><a href="#basics">Basics</a></li>
+</ul></li>
+<li><a href="#একসএমএল">এক্সএমএল</a>
+<ul>
+<li><a href="#মল-কথ">মূল কথা</a></li>
+</ul></li>
+<li><a href="#different-xml-files-used-in-android">Different XML Files Used in Android:</a>
+<ul>
+<li><a href="#layout-xml-files">1. Layout XML Files:</a></li>
+<li><a href="#লআউট-একসএমএল-ফইলগল">1. লেআউট এক্সএমএল ফাইলগুলি:</a>
+<ul>
+<li><a href="#basic-layout-xml-code">Basic Layout XML Code:</a></li>
+</ul></li>
+<li><a href="#manifest-xml-file-mainfest.xml">2. Manifest xml File (Mainfest.xml):</a></li>
+<li><a href="#মযনফসট-একসএমএল-ফইল-মইনফসট.একসএমএল">2. ম্যানিফেস্ট এক্সএমএল ফাইল (মেইনফেস্ট.এক্সএমএল):</a>
+<ul>
+<li><a href="#defining-internet-permission-in-androidmanifest.xml">Defining Internet Permission in AndroidManifest.xml</a></li>
+<li><a href="#location-in-android-studio">Location in Android Studio:</a></li>
+<li><a href="#অযনডরযড-সটডওত-অবসথন-1">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান:</a></li>
+</ul></li>
+<li><a href="#styles-xml-filestyles.xml">4. Styles xml File(styles.xml):</a>
+<ul>
+<li><a href="#location-in-android-studio-1">Location in Android Studio:</a></li>
+</ul></li>
+<li><a href="#সটইলস-একসএমএল-ফইল-শল-একসএমএল">4. স্টাইলস এক্সএমএল ফাইল (শৈলী। এক্সএমএল):</a>
+<ul>
+<li><a href="#অযনডরযড-সটডওত-অবসথন-2">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান:</a></li>
+</ul></li>
+<li><a href="#drawable-xml-files">5. Drawable xml Files:</a></li>
+<li><a href="#অঙকনযগয-একসএমএল-ফইল">5. অঙ্কনযোগ্য এক্সএমএল ফাইল:</a></li>
+<li><a href="#color-xml-file-colors.xml">6. Color xml File (colors.xml):</a>
+<ul>
+<li><a href="#location-in-android-studio-2">Location in Android Studio</a></li>
+</ul></li>
+<li><a href="#রঙন-একসএমএল-ফইল-color.xml">6. রঙিন এক্সএমএল ফাইল (color.xML):</a>
+<ul>
+<li><a href="#অযনডরযড-সটডওত-অবসথন-3">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান</a></li>
+</ul></li>
+<li><a href="#dimension-xml-filedimens.xml">7. Dimension xml File(dimens.xml):</a>
+<ul>
+<li><a href="#location-in-android-studio-3">Location in Android Studio:</a></li>
+</ul></li>
+<li><a href="#মতর-একসএমএল-ফইল-dimens.xml">7. মাত্রা এক্সএমএল ফাইল (dimens.xML):</a>
+<ul>
+<li><a href="#অযনডরযড-সটডওত-অবসথন-4">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান:</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#home-digitalbd.org">HOME <span>digitalbd.org</span></a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+<hr />
+<p>title: XML Extensible Markup Language এক্সএমএল_ এক্সটেনসিবল মার্কআপ ল্যাঙ্গুয়েজ এবং অ্যান্ড্রয়েডে এক্সএমএল .</p>
+<p>author : by Shyed Shahriar Housaini.</p>
+<p>linkcolor: blue</p>
+<p>pdf-engine: xelatex</p>
+header-includes: -
+<p>classoption: “12pt”</p>
+<hr />
+<h1 id="xml">XML</h1>
+<blockquote>
+<h2 id="xml-1"><strong><em>XML :</em></strong></h2>
+</blockquote>
+<p>XML stands for Extensible Markup Language. XML is a markup language much like HTML used to describe data. XML tags are not predefined in XML. We must define our own Tags. Xml as itself is well readable both by human and machine. Also, it is scalable and simple to develop. In Android we use xml for designing our layouts because xml is lightweight language so it doesn’t make our layout heavy.</p>
+<p>………….</p>
+<p>………………</p>
+<p>……………………….</p>
+<p>………………………………….</p>
+<p>……………………………………………..</p>
+<h1 id="xml-in-android">XML in Android:</h1>
+<blockquote>
+<p>## <strong><em>XML in Android:</em></strong></p>
+</blockquote>
+<h3 id="basics">Basics</h3>
+<blockquote>
+<h1 id="basics-and-different-xml-files-used-in-android"><strong><em>Basics And Different XML Files Used In Android</em></strong></h1>
+</blockquote>
+<p>In this article we will go through the basic concepts of xml in Android and different XML files used for different purpose in Android. This will help you in writing a UI code to design your desired user interface.</p>
+<blockquote>
+<h2 id="basics-of-user-interface"><strong><em>Basics Of User Interface:</em></strong></h2>
+</blockquote>
+<p>The whole concept of Android User Interface is defined using the hierarchy of View and ViewGroup objects. A ViewGroup is an invisible container that organizes child views. These child views are other widgets which are used to make the different parts of UI. One ViewGroup can have another ViewGroup as an child element as shown in the figure given below:</p>
+<h1 id="একসএমএল">এক্সএমএল</h1>
+<blockquote>
+<h2 id="একসএমএল-_">** _ এক্সএমএল: _ **</h2>
+</blockquote>
+<p>এক্সএমএল মানে এক্সটেনসিবল মার্কআপ ল্যাঙ্গুয়েজ। এক্সএমএল হ’ল এইচটিএমএলের মতো ডেটা বর্ণনার জন্য ব্যবহৃত একটি মার্কআপ ভাষা। এক্সএমএল ট্যাগগুলি এক্সএমএলে পূর্বনির্ধারিত নয়। আমাদের অবশ্যই নিজের ট্যাগ সংজ্ঞায়িত করতে হবে। এক্সএমএল নিজে এবং মানুষ এবং মেশিন উভয়ই ভালভাবে পঠনযোগ্য। এছাড়াও এটি বিকাশযোগ্য এবং সহজ is অ্যান্ড্রয়েডে আমরা আমাদের লেআউটগুলি ডিজাইনের জন্য এক্সএমএল ব্যবহার করি কারণ এক্সএমএল হালকা ওজনের ভাষা তাই এটি আমাদের লেআউটটিকে ভারী করে না।</p>
+<p>………….</p>
+<p>………………</p>
+<p>……………………….</p>
+<p>………………………………….</p>
+<p>………………………………………….. …</p>
+<p>অ্যান্ড্রয়েডে # এক্সএমএল: &gt; ## ** _ অ্যান্ড্রয়েডে এক্সএমএল: _ **</p>
+<h3 id="মল-কথ">মূল কথা</h3>
+<blockquote>
+<h1 id="অযনডরযড-বযবহত-বসক-এব-বভনন-একসএমএল-ফইল-_">** _ অ্যান্ড্রয়েডে ব্যবহৃত বেসিক এবং বিভিন্ন এক্সএমএল ফাইল _ **</h1>
+</blockquote>
+<p>এই নিবন্ধে আমরা অ্যান্ড্রয়েডে এক্সএমএল এবং অ্যান্ড্রয়েডে বিভিন্ন উদ্দেশ্যে ব্যবহৃত বিভিন্ন এক্সএমএল ফাইলের প্রাথমিক ধারণাগুলি নিয়ে যাব। এটি আপনাকে আপনার পছন্দসই ইউজার ইন্টারফেসটি ডিজাইন করতে একটি ইউআই কোড রচনায় সহায়তা করবে।</p>
+<!-- Images -->
+<figure>
+<img src="./Basic-UI-user-interface-ViewGroup-and-View-Diagram.jpg" alt="Basics Of User Interface" /><figcaption aria-hidden="true">Basics Of User Interface</figcaption>
+</figure>
+<!--
++ Image credit to  [Basics Of User Interface](https://abhiandroid.com/ui/wp-content/uploads/2016/06/Basic-UI-user-interface-ViewGroup-and-View-Diagram.jpg).
+-->
+<p>Here in above Diagram ViewGroup (Linear Layout) contains one ViewGroup (i.e. Relative Layout)and two View(Button and TextView). Further two more View (i.e. 2 EditText ) are nested inside Relative Layout ViewGroup. It is important to note that one layout can be nested in another layout.</p>
+<p>উপরের চিত্রগুলিতে ভিউগ্রুপ (লিনিয়ার লেআউট) এর মধ্যে একটি ভিউ গ্রুপ (অর্থাত্ রিলেটিভ লেআউট) এবং দুটি ভিউ (বাটন এবং টেক্সটভিউ) রয়েছে। আরও দুটি ভিউ (অর্থাত্ 2 এডিটেক্সট) রিলেটিভ লেআউট ভিউগ্রুপের ভিতরে বাসাযুক্ত। এটি লক্ষ করা গুরুত্বপূর্ণ যে একটি বিন্যাস অন্য লেআউটে নেস্ট করা যায়।</p>
+<p>নীচের কোড স্নিপেট উপরের চিত্রটি আরও ভালভাবে ব্যাখ্যা করবে। এটিকে কার্যকলাপ_মাইন.এক্সএম এ আটকান</p>
+<p>The below code snippet will explain the above image in better way. Paste it in activity_main.xm</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;utf-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">LinearLayout</span><span class="ot"> xmlns:android=</span><span class="st">&quot;http://schemas.android.com/apk/res/android&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:orientation=</span><span class="st">&quot;vertical&quot;</span><span class="ot"> android:layout_width=</span><span class="st">&quot;match_parent&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_height=</span><span class="st">&quot;match_parent&quot;</span>&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a> &lt;<span class="kw">Button</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:id=</span><span class="st">&quot;@+id/buton1&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_width=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:text=</span><span class="st">&quot;Button&quot;</span>/&gt;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a> &lt;<span class="kw">TextView</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:id=</span><span class="st">&quot;@+id/textView1&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_width=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:text=</span><span class="st">&quot;sample Text&quot;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_marginTop=</span><span class="st">&quot;15dp&quot;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:textSize=</span><span class="st">&quot;30dp&quot;</span>/&gt;</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a> &lt;<span class="kw">RelativeLayout</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_width=</span><span class="st">&quot;match_parent&quot;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_height=</span><span class="st">&quot;match_parent&quot;</span>&gt;</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a> &lt;<span class="kw">EditText</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:id=</span><span class="st">&quot;@+id/editTextName&quot;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_width=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:hint=</span><span class="st">&quot;First Name&quot;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a> /&gt;</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a> &lt;<span class="kw">EditText</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:id=</span><span class="st">&quot;@+id/editTextLastName&quot;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_width=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ot"> android:hint=</span><span class="st">&quot;Last Name&quot;</span>/&gt;</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a> &lt;/<span class="kw">RelativeLayout</span>&gt;</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">LinearLayout</span>&gt;</span></code></pre></div>
+<figure>
+<img src="./XML-UI-in-Android-with-example.jpg" title="Basics Android UI" alt="Basics Android UI" /><figcaption aria-hidden="true">Basics Android UI</figcaption>
+</figure>
+<h1 id="different-xml-files-used-in-android">Different XML Files Used in Android:</h1>
+<blockquote>
+<h2 id="different-xml-files-used-in-android-1"><strong><em>Different XML Files Used in Android:</em></strong></h2>
+</blockquote>
+<p>In Android there are several xml files used for several different purposes. Below we define each and every one.</p>
+<h2 id="layout-xml-files">1. Layout XML Files:</h2>
+<p>Layout xml files are used to define the actual UI(User interface) of our application. It holds all the elements(views) or the tools that we want to use in our application. Like the TextView’s, Button’s and other UI elements.</p>
+<p>### Location in Android Studio: You will find out this file inside the res folder and inside it there is another folder named layout where you will get all the layout files for their respective activities or fragments.</p>
+<figure>
+<img src="./Layout-XML-in-Android-Studio.jpg" title="Layout XML Files" alt="Basics Android UI" /><figcaption aria-hidden="true">Basics Android UI</figcaption>
+</figure>
+<h2 id="লআউট-একসএমএল-ফইলগল">1. লেআউট এক্সএমএল ফাইলগুলি:</h2>
+<p>লেআউট এক্সএমএল ফাইলগুলি আমাদের অ্যাপ্লিকেশনটির প্রকৃত ইউআই (ইউজার ইন্টারফেস) সংজ্ঞায়িত করতে ব্যবহৃত হয়। এটি আমাদের অ্যাপ্লিকেশনটিতে সমস্ত উপাদান (দর্শন) বা সরঞ্জামগুলি ব্যবহার করতে চাই যা এটি ধারণ করে। টেক্সটভিউ, বোতাম এবং অন্যান্য ইউআই উপাদানগুলির মতো।</p>
+<p>### অ্যান্ড্রয়েড স্টুডিওতে অবস্থান: আপনি এই ফাইলটি রেজোল্ড ফোল্ডারের ভিতরে খুঁজে পাবেন এবং এর ভিতরে অন্য একটি ফোল্ডার রয়েছে যার নাম লেআউট রয়েছে যেখানে আপনি তাদের নিজ নিজ ক্রিয়াকলাপ বা টুকরো জন্য সমস্ত লেআউট ফাইল পাবেন।</p>
+<h3 id="basic-layout-xml-code">Basic Layout XML Code:</h3>
+<p>Below we show activity_main.xml file in which we have two TextView’s. ### বেসিক লেআউট এক্সএমএল কোড: নীচে আমরা ক্রিয়াকলাপ_মাইন.এক্সএমএল ফাইলটি প্রদর্শন করি যেখানে আমাদের দুটি পাঠ্যদর্শন রয়েছে।</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--  RelativeLayout in which we set green color for the background --&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">RelativeLayout</span><span class="ot"> xmlns:android=</span><span class="st">&quot;http://schemas.android.com/apk/res/android&quot;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ot">xmlns:tools=</span><span class="st">&quot;http://schemas.android.com/tools&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_width=</span><span class="st">&quot;match_parent&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_height=</span><span class="st">&quot;match_parent&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ot">android:background=</span><span class="st">&quot;@color/greenColor&quot;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ot">tools:context=</span><span class="st">&quot;.MainActivity&quot;</span>&gt;</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">TextView</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ot">android:id=</span><span class="st">&quot;@+id/firstTextView&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_width=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_centerHorizontal=</span><span class="st">&quot;true&quot;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_margin=</span><span class="st">&quot;20dp&quot;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ot">android:padding=</span><span class="st">&quot;10dp&quot;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ot">android:text=</span><span class="st">&quot;First Text View&quot;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ot">android:textColor=</span><span class="st">&quot;@color/white&quot;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ot">android:textSize=</span><span class="st">&quot;20sp&quot;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ot">android:textStyle=</span><span class="st">&quot;bold&quot;</span> /&gt;</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- second TextView --&gt;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">TextView</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ot">android:id=</span><span class="st">&quot;@+id/secondTextView&quot;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_width=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_below=</span><span class="st">&quot;@+id/firstTextView&quot;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_centerHorizontal=</span><span class="st">&quot;true&quot;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ot">android:layout_margin=</span><span class="st">&quot;20dp&quot;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ot">android:padding=</span><span class="st">&quot;10dp&quot;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ot">android:text=</span><span class="st">&quot;Second Text View&quot;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ot">android:textColor=</span><span class="st">&quot;@color/white&quot;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ot">android:textSize=</span><span class="st">&quot;20sp&quot;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="ot">android:textStyle=</span><span class="st">&quot;bold&quot;</span> /&gt;</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">RelativeLayout</span>&gt;</span></code></pre></div>
+<h2 id="manifest-xml-file-mainfest.xml">2. Manifest xml File (Mainfest.xml):</h2>
+<p>This xml is used to define all the components of our application. It includes the names of our application packages, our Activities, receivers, services and the permissions that our application needs. For Example – Suppose we need to use internet in our app then we need to define Internet permission in this file.</p>
+<h2 id="মযনফসট-একসএমএল-ফইল-মইনফসট.একসএমএল">2. ম্যানিফেস্ট এক্সএমএল ফাইল (মেইনফেস্ট.এক্সএমএল):</h2>
+<p>এই এক্সএমএলটি আমাদের অ্যাপ্লিকেশনটির সমস্ত উপাদান সংজ্ঞায়িত করতে ব্যবহৃত হয়। এটিতে আমাদের অ্যাপ্লিকেশনগুলির প্রয়োজনীয় প্যাকেজগুলির নাম, আমাদের ক্রিয়াকলাপ, রিসিভার, পরিষেবা এবং আমাদের অ্যাপ্লিকেশনটির প্রয়োজনীয় অনুমতি রয়েছে। উদাহরণস্বরূপ - ধরুন আমাদের অ্যাপ্লিকেশনটিতে আমাদের ইন্টারনেট ব্যবহার করা প্রয়োজন তবে আমাদের এই ফাইলে ইন্টারনেটের অনুমতি নির্ধারণ করতে হবে।</p>
+<h4 id="অযনডরযড-সটডওত-অবসথন">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান:</h4>
+<p>এটি অ্যাপের ভিতরে অবস্থিত&gt; ফোল্ডারটি প্রকাশ করে #### Location in Android Studio:</p>
+<p>It is located inside app &gt; manifests folder</p>
+<figure>
+<img src="./AndroidManifest-xml-location-in-Android-Studio.jpg" title="manifests folder" alt="AndroidManifest-xml-location-in-Android-Studio" /><figcaption aria-hidden="true">AndroidManifest-xml-location-in-Android-Studio</figcaption>
+</figure>
+<h3 id="defining-internet-permission-in-androidmanifest.xml">Defining Internet Permission in AndroidManifest.xml</h3>
+<p>Below we show the AndroidManifest.xml file and define the Internet Permission in that file. ### অ্যান্ড্রয়েড ম্যানিফেস্ট.এক্সএমএলে ইন্টারনেট অনুমতি নির্ধারণ করা</p>
+<p>নীচে আমরা অ্যান্ড্রয়েড ম্যানিফেস্ট.এক্সএমএল ফাইলটি দেখাই এবং সেই ফাইলটিতে ইন্টারনেট অনুমতি সংজ্ঞায়িত করি।</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;utf-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">manifest</span><span class="ot"> xmlns:android=</span><span class="st">&quot;http://schemas.android.com/apk/res/android&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ot">package=</span><span class="st">&quot;example.abhiandroid.MyApplication&quot;</span>&gt;     <span class="co">&lt;!-- application package name --&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">uses-permission</span><span class="ot"> android:name=</span><span class="st">&quot;ANDROID.PERMISSION.INTERNET&quot;</span> /&gt;</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- define Internet Permission --&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">application</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ot">android:allowBackup=</span><span class="st">&quot;true&quot;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ot">android:icon=</span><span class="st">&quot;@mipmap/ic_launcher&quot;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ot">android:label=</span><span class="st">&quot;@string/app_name&quot;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ot">android:theme=</span><span class="st">&quot;@style/AppTheme&quot;</span>&gt;</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- add your Activities, Receivers, Services Names Here --&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">activity</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ot">android:name=</span><span class="st">&quot;.MainActivity&quot;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ot">android:label=</span><span class="st">&quot;@string/app_name&quot;</span>&gt;</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">intent-filter</span>&gt;</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">action</span><span class="ot"> android:name=</span><span class="st">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">category</span><span class="ot"> android:name=</span><span class="st">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">intent-filter</span>&gt;</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">activity</span>&gt;</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">application</span>&gt;</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">manifest</span>&gt;</span></code></pre></div>
+<p>## 3. Strings xml File(strings.xml): This xml file is used to replace the Hard-coded strings with a single string. We define all the strings in this xml file and then access them in our app(Activity or in Layout XML files) from this file. This file enhance the reusability of the code.</p>
+<h3 id="location-in-android-studio">Location in Android Studio:</h3>
+<p>321 / 5000 Translation results ## 3. স্ট্রিংস এক্সএমএল ফাইল (স্ট্রিং.এক্সএমএল): এই এক্সএমএল ফাইলটি হার্ড-কোডেড স্ট্রিংগুলিকে একক স্ট্রিংয়ের সাথে প্রতিস্থাপন করতে ব্যবহৃত হয়। আমরা এই এক্সএমএল ফাইলে সমস্ত স্ট্রিং সংজ্ঞায়িত করেছি এবং তারপরে এই ফাইলটি থেকে আমাদের অ্যাপে (ক্রিয়াকলাপ বা লেআউট এক্সএমএল ফাইলগুলিতে) অ্যাক্সেস করব। এই ফাইলটি কোডের পুনঃব্যবহারযোগ্যতা বাড়ায়।</p>
+<h3 id="অযনডরযড-সটডওত-অবসথন-1">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান:</h3>
+<figure>
+<img src="./strings-xml-location-android-studio.jpg" title="strings-xml-location-android-studio" alt="strings-xml-location-android-studio" /><figcaption aria-hidden="true">strings-xml-location-android-studio</figcaption>
+</figure>
+<blockquote>
+<p>Below we show strings.xml file and define a string in the file.</p>
+</blockquote>
+<p>65 / 5000 Translation results &gt; নীচে আমরা স্ট্রিং.এক্সএমএল ফাইল দেখি এবং ফাইলটিতে একটি স্ট্রিং সংজ্ঞায়িত করি।</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">resources</span>&gt;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">string</span><span class="ot"> name=</span><span class="st">&quot;app_name&quot;</span>&gt;My Application&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">string</span><span class="ot"> name=</span><span class="st">&quot;hello_world&quot;</span>&gt;Hello world!&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">string</span><span class="ot"> name=</span><span class="st">&quot;action_settings&quot;</span>&gt;Settings&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">string</span><span class="ot"> name=</span><span class="st">&quot;login&quot;</span>&gt;User Login&lt;/<span class="kw">string</span>&gt;</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- define your strings here --&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">resources</span>&gt;</span></code></pre></div>
+<h2 id="styles-xml-filestyles.xml">4. Styles xml File(styles.xml):</h2>
+<p>This xml is used to define different styles and looks for the UI(User Interface) of application. We define our custom themes and styles in this file.</p>
+<h3 id="location-in-android-studio-1">Location in Android Studio:</h3>
+<h2 id="সটইলস-একসএমএল-ফইল-শল-একসএমএল">4. স্টাইলস এক্সএমএল ফাইল (শৈলী। এক্সএমএল):</h2>
+<p>এই এক্সএমএলটি বিভিন্ন স্টাইল সংজ্ঞায়িত করতে ব্যবহৃত হয় এবং অ্যাপ্লিকেশনটির ইউআই (ইউজার ইন্টারফেস) সন্ধান করে। আমরা এই ফাইলটিতে আমাদের কাস্টম থিম এবং শৈলীর সংজ্ঞা দিই।</p>
+<h3 id="অযনডরযড-সটডওত-অবসথন-2">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান:</h3>
+<figure>
+<img src="./styles-location-xml-Android-Studio-1.jpg" title="styles-location-xml-Android-Studio-1" alt="styles-location-xml-Android-Studio-1" /><figcaption aria-hidden="true">styles-location-xml-Android-Studio-1</figcaption>
+</figure>
+<blockquote>
+<p>Below we show the style.xml file. নীচে আমরা স্টাইল.এক্সএমএল ফাইলটি দেখাব।</p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">resources</span>&gt;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Base application theme. --&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">style</span><span class="ot"> name=</span><span class="st">&quot;AppTheme&quot;</span><span class="ot"> parent=</span><span class="st">&quot;Theme.AppCompat.Light.DarkActionBar&quot;</span>&gt;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Customize your theme here. --&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">style</span>&gt;</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">resources</span>&gt;</span></code></pre></div>
+<h2 id="drawable-xml-files">5. Drawable xml Files:</h2>
+<p>These are those xml files that are used to provide various graphics to the elements or views of application. When we need to create a custom UI we use drawable xml files. Suppose if we need to define a gradient color in the background of Button or any custom shape for a view then we create a Drawable xml file and set it in the background of View.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Do Read: How To Create Drawable Resource XML File in Android Studio</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>Below we show custom_drawable.xml file and create a gradient background color using style attribute.</p>
+</blockquote>
+<h2 id="অঙকনযগয-একসএমএল-ফইল">5. অঙ্কনযোগ্য এক্সএমএল ফাইল:</h2>
+<p>এটি সেইগুলি এক্সএমএল ফাইল যা অ্যাপ্লিকেশনের উপাদানগুলি বা দর্শনের বিভিন্ন গ্রাফিক্স সরবরাহ করতে ব্যবহৃত হয়। যখন আমাদের একটি কাস্টম ইউআই তৈরি করা দরকার তখন আমরা অঙ্কনযোগ্য এক্সএমএল ফাইল ব্যবহার করি। মনে করুন আমাদের যদি দেখার জন্য বাটনের পটভূমিতে কোনও গ্রেডিয়েন্ট রঙ বা কোনও কাস্টম শেপ সংজ্ঞায়িত করতে হয় তবে আমরা একটি অঙ্কনযোগ্য এক্সএমএল ফাইল তৈরি করব এবং এটি ভিউ এর পটভূমিতে সেট করব।</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>পড়ুন: অ্যান্ড্রয়েড স্টুডিওতে কীভাবে ড্রয়যোগ্য রিসোর্স এক্সএমএল ফাইল তৈরি করবেন</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>নীচে আমরা কাস্টম_ড্রেবেবল.এক্সএমএল ফাইল দেখি এবং শৈলীর বৈশিষ্ট্য ব্যবহার করে গ্রেডিয়েন্ট পটভূমি রঙ তৈরি করি।</p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;utf-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">shape</span><span class="ot"> xmlns:android=</span><span class="st">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- define start, center and end color for gradient --&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">gradient</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ot">android:centerColor=</span><span class="st">&quot;#0f0&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ot">android:endColor=</span><span class="st">&quot;#00f&quot;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ot">android:startColor=</span><span class="st">&quot;#f00&quot;</span> /&gt;</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">shape</span>&gt;</span></code></pre></div>
+<h2 id="color-xml-file-colors.xml">6. Color xml File (colors.xml):</h2>
+<p>This file is used to define the color codes that we used in our app. We simply define the color’s in this file and used them in our app from this file.</p>
+<h3 id="location-in-android-studio-2">Location in Android Studio</h3>
+<h2 id="রঙন-একসএমএল-ফইল-color.xml">6. রঙিন এক্সএমএল ফাইল (color.xML):</h2>
+<p>এই ফাইলটি আমরা আমাদের অ্যাপ্লিকেশনটিতে যে রঙিন কোডগুলি ব্যবহার করেছি তা সংজ্ঞায়িত করতে ব্যবহৃত হয়। আমরা কেবল এই ফাইলটিতে রঙের সংজ্ঞা দিই এবং এই ফাইলটি থেকে আমাদের অ্যাপ্লিকেশনটিতে সেগুলি ব্যবহার করি।</p>
+<h3 id="অযনডরযড-সটডওত-অবসথন-3">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান</h3>
+<figure>
+<img src="./colors-xml-location-Android-Studio.jpg" title="colors-xml-location-Android-Studio" alt="colors-xml-location-Android-Studio" /><figcaption aria-hidden="true">colors-xml-location-Android-Studio</figcaption>
+</figure>
+<blockquote>
+<p>Below we show the colors.xml file in which we define green and white color.</p>
+</blockquote>
+<div class="sourceCode" id="cb7"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;utf-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">resources</span>&gt;</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- define your colors Here --&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">color</span><span class="ot"> name=</span><span class="st">&quot;greenColor&quot;</span>&gt;#0f0&lt;/<span class="kw">color</span>&gt;</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">color</span><span class="ot"> name=</span><span class="st">&quot;white&quot;</span>&gt;#fff&lt;/<span class="kw">color</span>&gt;</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">resources</span>&gt;</span></code></pre></div>
+<h2 id="dimension-xml-filedimens.xml">7. Dimension xml File(dimens.xml):</h2>
+<p>This xml file is used to define the dimensions of the View’s. Suppose we need a Button with 50dp(density pixel) height then we define the value 50dp in dimens.xml file and then use it in our app from this file.</p>
+<h3 id="location-in-android-studio-3">Location in Android Studio:</h3>
+<h2 id="মতর-একসএমএল-ফইল-dimens.xml">7. মাত্রা এক্সএমএল ফাইল (dimens.xML):</h2>
+<p>এই এক্সএমএল ফাইলটি ভিউ’র মাত্রা নির্ধারণ করতে ব্যবহৃত হয়। মনে করুন আমাদের 50 ডিপি (ঘনত্বের পিক্সেল) উচ্চতার একটি বাটন প্রয়োজন তখন আমরা dimens.xML ফাইলে 50dp মানটি সংজ্ঞায়িত করি এবং তারপরে এই ফাইলটি থেকে আমাদের অ্যাপ্লিকেশনটিতে এটি ব্যবহার করি।</p>
+<h3 id="অযনডরযড-সটডওত-অবসথন-4">অ্যান্ড্রয়েড স্টুডিওতে অবস্থান:</h3>
+<figure>
+<img src="./Dimension-xml-File-in-Android-Studio.jpg" title="Dimension-xml-File-in-Android-Studio" alt="Dimension-xml-File-in-Android-Studio" /><figcaption aria-hidden="true">Dimension-xml-File-in-Android-Studio</figcaption>
+</figure>
+<blockquote>
+<p>Below we show the dimens.xml file in which we define 50dp dimension for Button height.</p>
+</blockquote>
+<blockquote>
+<p>নীচে আমরা dimens.xML ফাইলটি দেখাই যেখানে আমরা বোতামের উচ্চতার জন্য 50dp মাত্রা নির্ধারণ করি।</p>
+</blockquote>
+<div class="sourceCode" id="cb8"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">resources</span>&gt;</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Default screen margins, per the Android Design guidelines. --&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">dimen</span><span class="ot"> name=</span><span class="st">&quot;activity_horizontal_margin&quot;</span>&gt;16dp&lt;/<span class="kw">dimen</span>&gt;</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">dimen</span><span class="ot"> name=</span><span class="st">&quot;activity_vertical_margin&quot;</span>&gt;16dp&lt;/<span class="kw">dimen</span>&gt;&lt;<span class="kw">dimen</span><span class="ot"> name=</span><span class="st">&quot;btnheight&quot;</span>&gt;50dp&lt;/<span class="kw">dimen</span>&gt;</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">resources</span>&gt;</span></code></pre></div>
+<h1 id="home-digitalbd.org">HOME <a href="https://digitalbd.org">digitalbd.org</a></h1>
+<h1 id="contact">Contact</h1>
+<ul>
+<li><p>Email : <a href="mailto:shyed2001@gmail.com">shyed2001@gmail.com</a></p></li>
+<li><p>Website : <a href="https://digitalbd.org">https://digitalbd.org</a></p></li>
+<li><p>Github : <a href="https://github.com/shyed2001">https://github.com/shyed2001</a></p></li>
+<li><p>LinkedIn : <a href="https://www.linkedin.com/in/shyed-shahriar-housaini">https://www.linkedin.com/in/shyed-shahriar-housaini</a></p></li>
+<li><p>MyCV : <a href="https://digitalbd.org/MyCV.html">https://digitalbd.org/MyCV.html</a></p></li>
+</ul>
+</body>
+</html>
