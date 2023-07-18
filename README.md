@@ -378,4 +378,74 @@ There are a few different ways to display a JSON document:
 * **Text editor:** You can also display a JSON document in a text editor. However, the text editor will not be able to interpret the JSON tags, so the document will not be displayed correctly.
 * **Command-line:** You can also display a JSON document from the command-line using the `json` command. The `json` command will display the JSON document in a human-readable format.
 
+Different tools that you can use to work with each markup language:
+
+**HTML**
+
+* **Text editors:** Text editors are a good choice for basic HTML editing. They allow you to create and edit HTML documents, and they typically have features for syntax highlighting and validation. Some popular text editors for HTML include Notepad++, Sublime Text, and Atom.
+* **HTML editors:** HTML editors are a more specialized type of editor that is designed specifically for HTML development. They typically have features for code completion, debugging, and previewing. Some popular HTML editors include Dreamweaver, Visual Studio Code, and Brackets.
+* **Online editors:** Online editors allow you to create and edit HTML documents without having to install any software. They are a good option for people who do not want to install a text editor or HTML editor on their computer. Some popular online editors for HTML include CodePen, JSFiddle, and Glitch.
+
+**XML**
+
+* **Text editors:** Text editors are a good choice for basic XML editing. They allow you to create and edit XML documents, and they typically have features for syntax highlighting and validation. Some popular text editors for XML include Notepad++, Sublime Text, and Atom.
+* **XML editors:** XML editors are a more specialized type of editor that is designed specifically for XML development. They typically have features for code completion, debugging, and previewing. Some popular XML editors include Oxygen XML Editor, Altova XMLSpy, and XMLSPad.
+* **Online editors:** Online editors allow you to create and edit XML documents without having to install any software. They are a good option for people who do not want to install a text editor or XML editor on their computer. Some popular online editors for XML include CodePen, JSFiddle, and Glitch.
+
+**XAML**
+
+* **Text editors:** Text editors are a good choice for basic XAML editing. They allow you to create and edit XAML documents, and they typically have features for syntax highlighting and validation. Some popular text editors for XAML include Notepad++, Sublime Text, and Atom.
+* **XAML editors:** XAML editors are a more specialized type of editor that is designed specifically for XAML development. They typically have features for code completion, debugging, and previewing. Some popular XAML editors include Visual Studio, Expression Blend, and Blend for Visual Studio.
+* **Online editors:** Online editors allow you to create and edit XAML documents without having to install any software. They are a good option for people who do not want to install a text editor or XAML editor on their computer. Some popular online editors for XAML include CodePen, JSFiddle, and Glitch.
+
+**YAML**
+
+* **Text editors:** Text editors are a good choice for basic YAML editing. They allow you to create and edit YAML documents, and they typically have features for syntax highlighting and validation. Some popular text editors for YAML include Notepad++, Sublime Text, and Atom.
+* **YAML viewers:** YAML viewers are a type of software application that is designed specifically for displaying and editing YAML documents. They typically have features for syntax highlighting, validation, and previewing. Some popular YAML viewers include YamlLint, YAML Editor, and YAML Online.
+* **Command-line:** You can also work with YAML documents from the command-line using the `yaml` command. The `yaml` command allows you to view, edit, and validate YAML documents.
+
+**JSON**
+
+* **Text editors:** Text editors are a good choice for basic JSON editing. They allow you to create and edit JSON documents, and they typically have features for syntax highlighting and validation. Some popular text editors for JSON include Notepad++, Sublime Text, and Atom.
+* **JSON viewers:** JSON viewers are a type of software application that is designed specifically for displaying and editing JSON documents. They typically have features for syntax highlighting, validation, and previewing. Some popular JSON viewers include JSONLint, JSON Editor, and JSON Online.
+* **Command-line:** You can also work with JSON documents from the command-line using the `json` command. The `json` command allows you to view, edit, and validate JSON documents.
+
+
+
+Best practices for using each markup language:
+
+**HTML**
+
+* **Use descriptive tags:** When you are creating HTML documents, use descriptive tags that accurately reflect the content of the document. This will make your documents easier to read and understand, and it will also make it easier for search engines to index your documents.
+* **Use valid markup:** Validate your HTML documents to ensure that they are well-formed and that they follow the rules of the HTML specification. This will help to ensure that your documents are displayed correctly in web browsers.
+* **Use semantic markup:** Use semantic markup to indicate the meaning of the content in your documents. This will make your documents more accessible to people with disabilities, and it will also make it easier for search engines to index your documents.
+* **Use consistent formatting:** Use consistent formatting throughout your documents to make them easier to read and understand. This includes using the same font, font size, and line spacing throughout your documents.
+* **Use comments:** Use comments to document your HTML documents and to explain the purpose of the different tags. This will make your documents easier to understand for yourself and for other people who may need to work on them in the future.
+
+**XML**
+
+* **Use namespaces:** Use namespaces to avoid name collisions in your XML documents. This will help to ensure that your documents are well-formed and that they can be interpreted correctly by other applications.
+* **Use comments:** Use comments to document your XML documents and to explain the purpose of the different elements. This will make your documents easier to understand for yourself and for other people who may need to work on them in the future.
+* **Validate your XML documents:** Validate your XML documents to ensure that they are well-formed and that they follow the rules of the XML specification. This will help to ensure that your documents are displayed correctly in applications that support XML.
+* **Use DTDs or schemas:** Use DTDs or schemas to define the structure of your XML documents. This will help to ensure that your documents are well-formed and that they can be interpreted correctly by other applications.
+
+**XAML**
+
+* **Use descriptive names:** When you are creating XAML documents, use descriptive names for your elements and attributes. This will make your documents easier to read and understand, and it will also make it easier for other people who may need to work on them in the future.
+* **Use namespaces:** Use namespaces to avoid name collisions in your XAML documents. This will help to ensure that your documents are well-formed and that they can be interpreted correctly by other applications.
+* **Validate your XAML documents:** Validate your XAML documents to ensure that they are well-formed and that they follow the rules of the XAML specification. This will help to ensure that your documents are displayed correctly in applications that support XAML.
+* **Use comments:** Use comments to document your XAML documents and to explain the purpose of the different elements and attributes. This will make your documents easier to understand for yourself and for other people who may need to work on them in the future.
+
+**YAML**
+
+* **Use indentation:** Use indentation to improve the readability of your YAML documents. This will make your documents easier to read and understand, and it will also make it easier to find specific parts of your documents.
+* **Use comments:** Use comments to document your YAML documents and to explain the purpose of the different elements. This will make your documents easier to understand for yourself and for other people who may need to work on them in the future.
+* **Validate your YAML documents:** Validate your YAML documents to ensure that they are well-formed and that they follow the rules of the YAML specification. This will help to ensure that your documents are interpreted correctly by applications that support YAML.
+
+**JSON**
+
+* **Use consistent formatting:** Use consistent formatting throughout your JSON documents to make them easier to read and understand. This includes using the same indentation style and the same spacing throughout your documents.
+* **Use comments:** Use comments to document your JSON documents and to explain the purpose of the different elements. This will make your documents easier to understand for yourself and for other people who may need to work on them in the future.
+* **Validate your JSON documents:** Validate your JSON documents to ensure that they are well-formed and that they follow the rules of the JSON specification. This will help to ensure that your documents are interpreted correctly by applications that support JSON.
+
 I hope this helps! Let me know if you have any other questions.
